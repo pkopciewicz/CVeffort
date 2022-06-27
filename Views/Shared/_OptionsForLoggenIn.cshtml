@@ -1,0 +1,16 @@
+﻿@*Adding manu options for logged in users.*@
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Raporting" style="color:orangered">Raporting</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="DamagedUnits" asp-action="ListOfRaportedElements" style="color:royalblue">List of raported elements</a>
+    </li>
+}
+else { }

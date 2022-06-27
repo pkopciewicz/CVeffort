@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CVeffort.Models.DamagedUnits>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "List of raported elements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 style="text-align:center">@ViewData["Title"]</h1>
+
+<table class="table table-sm table-striped table-hover border-bottom">
+    <thead>
+        <tr>
+            <th><b>Id</b></th>
+            <th><b>When added</b></th>
+            <th><b>Who added</b></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WhenAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WhoAdded)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    @if (User.Identity.Name == item.WhoAdded)
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">| Delete</a>
+                    }
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
