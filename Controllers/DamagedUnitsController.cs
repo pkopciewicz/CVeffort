@@ -97,6 +97,7 @@ namespace CVeffort.Controllers
         }
 
         // GET: DamagedUnits/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -179,6 +180,7 @@ namespace CVeffort.Controllers
 
         // POST: DamagedUnits/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
