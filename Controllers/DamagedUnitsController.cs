@@ -106,7 +106,11 @@ namespace CVeffort.Controllers
             {
                 return NotFound();
             }
-            return View(damagedUnits);
+            if (User.Identity.Name == damagedUnits.WhoAdded)
+            {
+                return View(damagedUnits);
+            }
+            return RedirectToAction("ListOfRaportedElements");
         }
 
         // POST: DamagedUnits/Edit/5

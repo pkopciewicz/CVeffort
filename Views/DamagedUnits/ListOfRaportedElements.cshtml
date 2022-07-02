@@ -12,30 +12,33 @@
 <table class="table table-sm table-striped table-hover border-bottom">
     <thead>
         <tr>
-            <th><b>Id</b></th>
-            <th><b>When added</b></th>
-            <th><b>Who added</b></th>
+            <th style="border: 1px black solid"><b>Id</b></th>
+            <th style="border: 1px black solid"><b>When added</b></th>
+            <th style="border: 1px black solid"><b>Who added</b></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td style="border: 1px black solid">
                     @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.WhenAdded)
-                </td>
+                </td style="border: 1px black solid">
                 <td>
                     @Html.DisplayFor(modelItem => item.WhoAdded)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <td style="border: 1px black solid">
+                    @if (User.Identity.Name == item.WhoAdded)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a><span> | </span>
+                    }
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a>
                     @if (User.Identity.Name == item.WhoAdded)
                     {
-                        <a asp-action="Delete" asp-route-id="@item.Id">| Delete</a>
+                        <span> | </span><a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
 
                 </td>

@@ -26,8 +26,9 @@ namespace CVeffort
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            { 
-                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            {
+                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));//this is used with SQL server but we are using another DB now so we need to add different DB data
+                //services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));//"DefaultConnection" wed³ug npgsql powinno mieæ "ApplicationDbContext" link tu: https://www.npgsql.org/efcore/index.html
                 services.AddDatabaseDeveloperPageExceptionFilter();
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
                 services.AddControllersWithViews();
