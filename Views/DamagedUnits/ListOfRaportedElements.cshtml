@@ -13,8 +13,8 @@
     <thead>
         <tr>
             <th style="border: 1px black solid"><b>Id</b></th>
-            <th style="border: 1px black solid"><b>When added</b></th>
-            <th style="border: 1px black solid"><b>Who added</b></th>
+            <th style="border: 1px black solid"><b>Date</b></th>
+            <th style="border: 1px black solid"><b>Change made by</b></th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.WhoAdded)
                 </td>
-                <td style="border: 1px black solid">
+                <td style="border: 1px black solid; width:70px">
                     @if (User.Identity.Name == item.WhoAdded)
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a><span> | </span>

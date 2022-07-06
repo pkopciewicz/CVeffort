@@ -236,7 +236,7 @@
             <tr class="NoBorder" style="vertical-align:middle">
                 <td class="NoBorder" style="text-align:left">
                     <label for="IdOfElement">ID of element: </label>
-                    <input asp-for="Id"  />
+                    <input id="myID" asp-for="Id" />
                 </td>
                 <td class="NoBorder">
                     <input type="submit" value=" Save " style="color:green" />
@@ -246,10 +246,10 @@
     </form>
 </div>
 
-@section Scripts{ 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("input[type=text]").keydown(function (e) {
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[type=text]").keydown(function (e) {
                 switch (e.which) {
                     case 49:
                         return $(this).val("CR");
@@ -267,7 +267,13 @@
                         return $(this).val("");
                         break;
                 }
-        })
-    });
-</script>
+            })
+            $("#myID").keyup(function () {
+                let x = $(this).val();
+                if (x > 2147483647) {
+                    alert("Too big ID number!");
+                }
+            })
+        });
+    </script>
 }
