@@ -23,3 +23,13 @@ DisplayConfirmAccountLink = false;
 to be true (it is line 45)
 -------------
 2.b) To add e-mail verification:
+
+Create account on https://sendgrid.com/free/ than configure your Single Sender Verification and add API Key.
+Using console package manager add value to SendGridKey with command:
+
+dotnet user-secrets set SendGridKey <key>
+
+where <key> is your secret key which you get from https://sendgrid.com
+In CVeffort/Services/EmailSender.cs change line 46 & 48 on your e-mail which you added to Single Sender Verification
+
+--------------------------------------------------------------------------------------------------------------------------------------------
